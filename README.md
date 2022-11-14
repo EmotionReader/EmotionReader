@@ -15,9 +15,9 @@
 - 김덕규 : https://github.com/kimdeokkyu
 - 윤찬웅 :
 - 장재웅 : https://github.com/JaeUngJang
-- 박동균 :
+- 박동균 : https://github.com/duckgoo9
 - 조제원 :
-- 박수진 :
+- 박수진 : https://github.com/Pengrang7
 
 
 
