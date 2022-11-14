@@ -3,13 +3,12 @@
   <!--<a><img src="https://user-images.githubusercontent.com/83953721/201518884-329bc420-4e25-41f3-805c-2b3a63cd47e8.jpg" width="25"></a>--> EmotionReader
   <br>
 </h1>
-
 <h4 align="Left">  : 딥러닝을 활용한 표정 분석 프로그램 (Facial Expression Analysis Program Using Deep Learning)</h4>
-<p>
-	<b>프로젝트 기간 : 2022.05.09 - 2022.08.11</b>
-</p>
-<br />
 
+- 프로젝트 기간 : 2022.05.09 - 2022.08.11
+- Github : https://github.com/EmotionReader
+
+<br />
 
 # Team Member
 - 김덕규 : https://github.com/kimdeokkyu
