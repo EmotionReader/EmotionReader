@@ -1,0 +1,811 @@
+﻿using System;
+using System.Windows;
+using Microsoft.Win32;
+using System.Windows.Threading;
+using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.IO;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Demo
+{
+	public partial class MainWindow : Window
+	{
+		#region Member Variables
+		public Control con = Control.Instance;
+
+
+		//Progress Rate
+		internal double CurrentProgress
+		{
+			get { return progressbar.Value; }
+			set { Dispatcher.Invoke(new Action(() => { progressbar.Value = value; })); }
+		}
+		internal Visibility CurrentProgress_Visibility
+		{
+			get { return progressbar.Visibility; }
+			set { Dispatcher.Invoke(new Action(() => { progressbar.Visibility = value; })); }
+		}
+
+
+		List<int> list_facecodes = new List<int>(); // Merge & Delete 
+		internal static MainWindow main;
+		//private VideoInfo vinfo;
+		bool sldrDragStart = false;
+		//버튼 기능 변수
+		double keepsound { get; set; }
+		bool play = true;
+		bool sound = true;
+		#endregion
+
+		public MainWindow()
+		{
+			//Read File Paths
+			con.ReadFilePaths();
+
+			//Initialize
+			InitializeComponent();
+
+			con.MainWindow = this;
+
+			//Initialize ProgressBar 
+			main = this;
+			progressbar.Value = 0;
+		}
+
+		#region video player
+		private void MediaMain_MediaOpened(object sender, RoutedEventArgs e)
+		{
+			// 미디어 파일이 열리면, 플레이타임 슬라이더의 값을 초기화 한다.
+			sldrPlayTime.Minimum = 0;
+			sldrPlayTime.Maximum = mediaMain.NaturalDuration.TimeSpan.TotalSeconds;
+
+			slider_editor.Minimum = 0;
+			slider_editor.Maximum = mediaMain.NaturalDuration.TimeSpan.TotalSeconds;
+		}
+
+		private void MediaMain_MediaEnded(object sender, RoutedEventArgs e)
+		{
+			// 미디어 중
+			mediaMain.Stop();
+		}
+
+		private void MediaMain_MediaFailed(object sender, ExceptionRoutedEventArgs e)
+		{
+			// 미디어 파일 실행 오류시
+			MessageBox.Show("동영상 재생 실패 : " + e.ErrorException.Message.ToString());
+		}
+
+		private void BtnSelectFile_Click(object sender, RoutedEventArgs e)
+		{
+			// Win32 DLL 을 사용하여 선택할 파일 다이얼로그를 실행한다.
+			OpenFileDialog dlg = new OpenFileDialog()
+			{
+				DefaultExt = ".avi",
+				Filter = "All files (*.*)|*.*",
+				Multiselect = false
+			};
+
+			if (dlg.ShowDialog() == true)
+			{
+				con.SendDirectory(dlg.FileName);
+
+				// 선택한 파일을 Media Element에 지정하고 초기화한다.
+				mediaMain.Source = new Uri(dlg.FileName);
+				mediaMain.Volume = 0.5;
+				mediaMain.SpeedRatio = 1;
+
+				// 동영상 파일의 Timespan 제어를 위해 초기화와 이벤트처리기를 추가한다.
+				DispatcherTimer timer = new DispatcherTimer()
+				{
+					Interval = TimeSpan.FromSeconds(1)
+				};
+				timer.Tick += TimerTickHandler;
+				timer.Start();
+
+				// 선택한 파일을 실행
+				mediaMain.Play();
+				progressbar.Visibility = Visibility.Visible;
+
+				// Btn Start Setting
+				var brush = new ImageBrush();
+				string path = con.ProjectPath + @"Resources\Pause.png"; ;
+				var uri = new System.Uri(path);
+				var converted = uri.AbsoluteUri;
+				brush.ImageSource = new BitmapImage(new Uri(converted));
+				btnStart.Background = brush;
+			}
+		}
+
+		// 미디어파일 타임 핸들러
+		// 미디어파일의 실행시간이 변경되면 호출된다.
+		void TimerTickHandler(object sender, EventArgs e)
+		{
+			// 미디어파일 실행시간이 변경되었을 때 사용자가 임의로 변경하는 중인지를 체크한다.
+			if (sldrDragStart)
+				return;
+
+			if (mediaMain.Source == null || !mediaMain.NaturalDuration.HasTimeSpan)
+			{
+				lblPlayTime.Content = "No file selected...";
+				return;
+			}
+			// 미디어 파일 총 시간을 슬라이더와 동기화한다.
+			sldrPlayTime.Value = mediaMain.Position.TotalSeconds;
+		}
+
+		private void BtnStart_Click(object sender, RoutedEventArgs e)
+		{
+			if (mediaMain.Source == null)
+				return;
+			if (play == false)
+			{
+				mediaMain.Play();
+				var brush = new ImageBrush();
+				string path = con.ProjectPath + @"Resources\Pause.png";
+				var uri = new System.Uri(path);
+				var converted = uri.AbsoluteUri;
+				brush.ImageSource = new BitmapImage(new Uri(converted));
+				btnStart.Background = brush;
+				play = true;
+			}
+			else
+			{
+				mediaMain.Pause();
+				var brush = new ImageBrush();
+				string path = con.ProjectPath + @"Resources\Play.png";
+				var uri = new System.Uri(path);
+				var converted = uri.AbsoluteUri;
+				brush.ImageSource = new BitmapImage(new Uri(converted));
+				btnStart.Background = brush;
+				play = false;
+			}
+		}
+
+		private void BtnStop_Click(object sender, RoutedEventArgs e)
+		{
+			if (mediaMain.Source == null)
+				return;
+
+			mediaMain.Stop();
+			var brush = new ImageBrush();
+			string path = con.ProjectPath + @"Resources\Play.png";
+			var uri = new System.Uri(path);
+			var converted = uri.AbsoluteUri;
+			brush.ImageSource = new BitmapImage(new Uri(converted));
+			btnStart.Background = brush;
+			play = false;
+		}
+
+		private void BtnPause_Click(object sender, RoutedEventArgs e)
+		{
+			if (mediaMain.Source == null)
+				return;
+
+			mediaMain.Pause();
+		}
+
+		private void SldrVolume_DragStarted(object sender, System.Windows.Controls.Primitives.DragStartedEventArgs e)
+		{
+
+		}
+
+		private void SldrVolume_DragCompleted(object sender, System.Windows.Controls.Primitives.DragCompletedEventArgs e)
+		{
+			// 사용자가 변경한 볼륨값으로 미디어 볼륨값을 변경한다.
+			mediaMain.Volume = sldrVolume.Value;
+		}
+		private void sldrVolume_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+		{
+			mediaMain.Volume = sldrVolume.Value;
+			if (keepsound != 0)
+			{
+				sound = true;
+			}
+			if (sldrVolume.Value == 0)
+			{
+				var brush = new ImageBrush();
+				string path = con.ProjectPath + @"Resources\SoundOff.png";
+				var uri = new System.Uri(path);
+				var converted = uri.AbsoluteUri;
+				brush.ImageSource = new BitmapImage(new Uri(converted));
+				soundimage.Background = brush;
+			}
+			else
+			{
+				var brush = new ImageBrush();
+				string path = con.ProjectPath + @"Resources\SoundOn.png";
+				var uri = new System.Uri(path);
+				var converted = uri.AbsoluteUri;
+				brush.ImageSource = new BitmapImage(new Uri(converted));
+				soundimage.Background = brush;
+			}
+		}
+		private void Label_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+		{
+			if (sound == true)
+			{
+				keepsound = sldrVolume.Value;
+				mediaMain.Volume = 0;
+				sldrVolume.Value = 0;
+				sound = false;
+
+
+			}
+			else if (sound == false)
+			{
+				sound = true;
+				sldrVolume.Value = keepsound;
+				keepsound = 0;
+			}
+		}
+
+		private void mediaMain_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+		{
+			if (play == false)
+			{
+				mediaMain.Play();
+				var brush = new ImageBrush();
+				string path = con.ProjectPath + @"Resources\Pause.png";
+				var uri = new System.Uri(path);
+				var converted = uri.AbsoluteUri;
+				brush.ImageSource = new BitmapImage(new Uri(converted));
+				btnStart.Background = brush;
+				play = true;
+			}
+			else
+			{
+				mediaMain.Pause();
+				var brush = new ImageBrush();
+				string path = con.ProjectPath + @"Resources\Play.png";
+				var uri = new System.Uri(path);
+				var converted = uri.AbsoluteUri;
+				brush.ImageSource = new BitmapImage(new Uri(converted));
+				btnStart.Background = brush;
+				play = false;
+			}
+		}
+
+		private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+		{
+			if (e.Key == System.Windows.Input.Key.Space)
+			{
+				if (play == false)
+				{
+					mediaMain.Play();
+					var brush = new ImageBrush();
+					string path = con.ProjectPath+ @"Resources\Pause.png";
+					var uri = new System.Uri(path);
+					var converted = uri.AbsoluteUri;
+					brush.ImageSource = new BitmapImage(new Uri(converted));
+					btnStart.Background = brush;
+					play = true;
+				}
+				else
+				{
+					mediaMain.Pause();
+					var brush = new ImageBrush();
+					string path = con.ProjectPath + @"Resources\Play.png";
+					var uri = new System.Uri(path);
+					var converted = uri.AbsoluteUri;
+					brush.ImageSource = new BitmapImage(new Uri(converted));
+					btnStart.Background = brush;
+					play = false;
+				}
+			}
+
+			if (e.Key == System.Windows.Input.Key.OemPeriod)
+			{
+				mediaMain.Position = TimeSpan.FromSeconds(sldrPlayTime.Value + 10);
+			}
+
+			if (e.Key == System.Windows.Input.Key.OemComma)
+			{
+				mediaMain.Position = TimeSpan.FromSeconds(sldrPlayTime.Value - 10);
+			}
+
+			if (e.Key == System.Windows.Input.Key.Up)
+			{
+				mediaMain.Volume = (double)(sldrVolume.Value + 0.1);
+			}
+
+			if (e.Key == System.Windows.Input.Key.Down)
+			{
+				mediaMain.Volume = (double)(sldrVolume.Value - 0.1);
+			}
+		}
+		#region Slider Control
+		private void SldrPlayTime_DragStarted(object sender, System.Windows.Controls.Primitives.DragStartedEventArgs e)
+		{
+			// 사용자가 시간대를 변경하면, 잠시 미디어 재생을 멈춘다.
+			sldrDragStart = true;
+			mediaMain.Pause();
+
+		  
+		}
+
+		private void SldrPlayTime_DragCompleted(object sender, System.Windows.Controls.Primitives.DragCompletedEventArgs e)
+		{
+			// 사용자가 지정한 시간대로 이동하면, 이동한 시간대로 값을 지정한다.
+			mediaMain.Position = TimeSpan.FromSeconds(sldrPlayTime.Value);
+
+			var brush = new ImageBrush();
+			string path = con.ProjectPath + @"Resources\Pause.png";
+			var uri = new System.Uri(path);
+			var converted = uri.AbsoluteUri;
+			brush.ImageSource = new BitmapImage(new Uri(converted));
+			btnStart.Background = brush;
+			play = true;
+
+			// 멈췄던 미디어를 재실행한다.
+			mediaMain.Play();
+			sldrDragStart = false;
+		}
+
+		private void SldrPlayTime_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+		{
+			//SliderBar와 timelinebar 동기화
+			double ins = ((sldrPlayTime.ActualWidth - 18) * sldrPlayTime.Value) / sldrPlayTime.Maximum;
+
+			Canvas.SetLeft(timelinebar, ins);
+
+	  
+
+			if (mediaMain.Source == null)
+				return;
+
+			// 플레이시간이 변경되면, 표시영역을 업데이트한다.
+			lblPlayTime.Content = String.Format("{0} / {1}", mediaMain.Position.ToString(@"mm\:ss"), mediaMain.NaturalDuration.TimeSpan.ToString(@"mm\:ss"));
+			//updateTimeLine(20);//
+			// jewon = (int)mediaMain.Position.TotalSeconds;
+
+			//jewon = (int)sldrPlayTime.Value;
+			if((mediaMain.Position > TimeSpan.FromSeconds(slider_editor.ValueEnd)) && (bool)edit_checkbox.IsChecked )
+			{
+				BtnPause_Click(null, null);
+				sldrPlayTime.Value = slider_editor.ValueEnd;
+				SldrPlayTime_DragCompleted(sender, null);
+				mediaMain.Pause();
+			}
+			if ((mediaMain.Position < TimeSpan.FromSeconds(slider_editor.ValueStart)) && (bool)edit_checkbox.IsChecked)
+			{
+				BtnPause_Click(null, null);
+				sldrPlayTime.Value = slider_editor.ValueStart;
+				SldrPlayTime_DragCompleted(sender, null);
+
+			}
+
+		}
+		#endregion
+
+		private void ClostItem_Click(object sender, RoutedEventArgs e)
+		{
+			this.Close();
+		}
+
+
+
+
+
+		private void btnM10sec_Click(object sender, RoutedEventArgs e)
+		{
+			mediaMain.Position = TimeSpan.FromSeconds(sldrPlayTime.Value - 10);
+		}
+
+		private void btnP10sec_Click(object sender, RoutedEventArgs e)
+		{
+
+			mediaMain.Position = TimeSpan.FromSeconds(sldrPlayTime.Value + 10);
+		}
+
+
+		#endregion
+
+		#region Window Load & Close
+		private void Window_Loaded(object sender, RoutedEventArgs e)
+		{
+			if (con.Init() == true)
+			{
+				MessageBox.Show("연결 대기");
+				con.Call_Python();
+			}
+		}
+
+		private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+		{
+			Environment.Exit(0);
+			System.Diagnostics.Process.GetCurrentProcess().Kill();
+			con.t.Abort();   
+			
+			this.Close();
+		}
+
+		#endregion
+
+		#region ScrollViewer
+		#region ScrollViewer (Make Slides)
+		public void MakeSilde(VideoInfo vinfo)
+		{
+			if(vinfo == null)
+			{
+				MessageBox.Show("load video data file error");
+				return;
+			}
+			double fps = vinfo.Fps;
+			int frame_gap = (int)(fps / vinfo.Times_per_sec);
+			int max_count = vinfo.Frame_max_count;
+
+			slide_area.Children.Clear();
+			double stackpanelmargin = 0;
+			foreach (var face in vinfo.Faces)
+			{
+				StackPanel stackPanel = new StackPanel();
+				stackPanel.Height = 50;
+				stackPanel.Orientation = Orientation.Horizontal;
+				//stackPanel.Margin = new Thickness(0, stackpanelmargin, 0,0);
+				stackpanelmargin += 50;
+
+
+				Button headimage = new Button();
+				var brush = new ImageBrush();
+				string path = vinfo.VideoPath;//@"C:\Users\jjw34\Desktop\BIT\11_Project\02_WPF_VideoEditor\0613_TimeLine_0\4444\";
+				path = path + "_" + face.Face_code.ToString() + ".png";
+				var uri = new System.Uri(path);
+				var converted = uri.AbsoluteUri;
+				brush.ImageSource = new BitmapImage(new Uri(converted));
+				headimage.Background = brush;
+				headimage.Height = 50;
+				headimage.Width = 50;
+				headimage.HorizontalAlignment = HorizontalAlignment.Left;
+
+				headimage.Content = string.Format(string.Format("                   face_{0}_false", face.Face_code));
+				headimage.Name = string.Format("face_{0}", face.Face_code);
+				headimage.Click += new RoutedEventHandler(ButtonCreatedFace_Click);
+
+				stackPanel.Children.Add(headimage);
+
+
+
+				Button current_button = null;
+
+				double sliderlenth = sldrPlayTime.ActualWidth - 16;
+
+				for (int i = 0; i < face.Face_details.Count; i++)
+				{
+					var face_detail = face.Face_details[i];
+					if (i != 0 &&
+						(face.Face_details[i - 1].Frame_no == (face_detail.Frame_no - frame_gap)) &&
+						(face.Face_details[i - 1].Emotion_code == face_detail.Emotion_code))
+					{
+						current_button.Width += (double)frame_gap / max_count * sliderlenth;
+						current_button.Content += string.Format("^{0}", face_detail.Frame_no);
+					}
+					else
+					{
+						current_button = new Button();
+						current_button.Height = 50;
+						current_button.Width = (double)frame_gap / max_count * sliderlenth;
+						double margin_left = i == 0 ? (double)face_detail.Frame_no / max_count * sliderlenth : (double)(face_detail.Frame_no - face.Face_details[i - 1].Frame_no - frame_gap) / max_count * sliderlenth;
+						current_button.Margin = new Thickness(margin_left, 0, 0, 0);
+						current_button.HorizontalAlignment = HorizontalAlignment.Left;
+						switch (face_detail.Emotion_code)
+						{
+							case 0: current_button.Background = Brushes.Beige; break;
+							case 1: current_button.Background = Brushes.Red; break;
+							case 2: current_button.Background = Brushes.Green; break;
+							case 3: current_button.Background = Brushes.Blue; break;
+							case 4: current_button.Background = Brushes.Yellow; break;
+							case 5: current_button.Background = Brushes.Orange; break;
+							case 6: current_button.Background = Brushes.PeachPuff; break;
+
+							default: current_button.Background = Brushes.Black; break;
+
+
+						}
+						current_button.Content = string.Format("^{0}^{1}", face_detail.Frame_no, face_detail.Frame_no);
+						//current_button.
+						current_button.Click += new RoutedEventHandler(ButtonCreatedByCode_Click);
+						stackPanel.Children.Add(current_button);
+					}
+
+				}
+				slide_area.Children.Add(stackPanel);
+			}
+		}
+
+		public void MakeSlide_D(VideoInfo vinfo)
+		{
+			Dispatcher.Invoke(new Action(() => MakeSilde(vinfo)));
+		}
+		#endregion
+
+		#region Made Button, CheckBox Events
+		private void ButtonCreatedByCode_Click(object sender, RoutedEventArgs e)
+		{
+			var keyword = (e.Source as Button).Content.ToString();
+			string[] sp = keyword.Split('^');
+
+			int fn = int.Parse(sp[1]);
+			int en = int.Parse(sp[sp.Length - 1]);
+
+			int fmc = con.Vinfo.Frame_max_count;
+
+			mediaMain.Position = TimeSpan.FromSeconds(fn / con.Vinfo.Fps);
+
+			if(edit_checkbox.IsChecked == true)
+			{
+				slider_editor.ValueStart = (double)fn / con.Vinfo.Fps;
+				slider_editor.ValueEnd = (double)(en + con.Vinfo.Fps/con.Vinfo.Times_per_sec) / con.Vinfo.Fps;
+			}
+			//MessageBox.Show(keyword);
+		}
+
+		// Button - Face_code
+		private void ButtonCreatedFace_Click(object sender, RoutedEventArgs e)
+		{
+			//Button facebutton = (e.Source as Button);
+			Button facebutton = sender as Button;
+			var truefalse1 = facebutton.Content.ToString().Trim();
+
+			//face_{0}_false
+			string[] sp = truefalse1.Split('_');
+			int facecode = int.Parse(sp[1]);
+			string truefalse = sp[2];
+
+			if (truefalse == "false")
+			{
+				facebutton.Content = string.Format(string.Format("                   face_{0}_true", facecode));
+				facebutton.Opacity = 0.3;
+				list_facecodes.Add(facecode);
+				list_facecodes.Sort();
+			}
+			else if (truefalse == "true")
+			{
+				facebutton.Content = string.Format(string.Format("                   face_{0}_false", facecode));
+				facebutton.Opacity = 1;
+				for (int i = 0; i < list_facecodes.Count; i++)
+				{
+					if (list_facecodes[i] == facecode)
+					{
+						list_facecodes.RemoveAt(i);
+						break;
+					}
+				}
+			}
+		}
+
+		#endregion
+		#endregion
+
+		#region Slider Editor Bar
+		private void slider_editor_ValueChanged(object sender, RoutedPropertyChangedEventArgs<HandyControl.Data.DoubleRange> e)
+		{
+
+		}
+
+		private void slider_editor_DragCompleted(object sender, System.Windows.Controls.Primitives.DragCompletedEventArgs e)
+		{
+			if (sldrPlayTime == null)
+			{
+				return;
+			}
+			if (sldrPlayTime.Value > slider_editor.ValueStart && sldrPlayTime.Value > slider_editor.ValueEnd)
+			{
+				sldrPlayTime.Value = slider_editor.ValueStart;
+				SldrPlayTime_DragCompleted(sender, null);
+			}
+		}
+
+		private void slider_editor_ValueChanged_1(object sender, RoutedPropertyChangedEventArgs<HandyControl.Data.DoubleRange> e)
+		{
+			double temp = slider_editor.ValueStart / slider_editor.Maximum * (slider_editor.ActualWidth - 18) + 1;
+			double edit_timelinebar_width = (slider_editor.ValueEnd - slider_editor.ValueStart) / slider_editor.Maximum * (slider_editor.ActualWidth - 18);
+			if (edit_timelinebar == null)
+				return;
+			Canvas.SetLeft(edit_timelinebar, temp);
+			edit_timelinebar.Width = Math.Abs(edit_timelinebar_width);
+		}
+		#endregion
+
+		#region MenuItem
+		private void MenuItem_Click(object sender, RoutedEventArgs e)
+		{
+			OpenFileDialog dlg = new OpenFileDialog()
+			{
+				//DefaultExt = ".avi",
+				Filter = "All files (*.*)|*.*",
+				Multiselect = false
+			};
+
+			if (dlg.ShowDialog() == true)
+			{
+
+				con.FileRead(dlg.FileName);
+				MakeSilde(con.Vinfo);
+
+				string videoPath = con.Vinfo.VideoPath;
+				mediaMain.Source = new Uri(videoPath);
+				mediaMain.Volume = 0.5;
+				mediaMain.SpeedRatio = 1;
+
+				// 동영상 파일의 Timespan 제어를 위해 초기화와 이벤트처리기를 추가한다.
+				DispatcherTimer timer = new DispatcherTimer()
+				{
+					Interval = TimeSpan.FromSeconds(1)
+				};
+				timer.Tick += TimerTickHandler;
+				timer.Start();
+
+				// 선택한 파일을 실행
+				mediaMain.Play();
+				var brush = new ImageBrush();
+				string path = con.ProjectPath + @"Resources\Pause.png";
+				var uri = new System.Uri(path);
+				var converted = uri.AbsoluteUri;
+				brush.ImageSource = new BitmapImage(new Uri(converted));
+				btnStart.Background = brush;
+			}
+		}
+
+
+		#endregion
+
+		#region Update LogMessage
+		private void UpdateLogMsg(string msg, int flag)
+		{
+			logmsg.Text = msg;
+
+			switch (flag)
+			{
+				case 0: logrect.Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFFFFF"); break;// None    - 빨강색
+				case 1: logrect.Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#6B6B6B"); break;// START   -
+				case 2: logrect.Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#FC0000"); break;// STOP    - 
+				case 3: logrect.Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#00CC00"); break;// CONNECT - 녹색
+				case 4: logrect.Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#FC0000"); break;// DISCONN - 
+				case 5: logrect.Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFB441"); break;// ERROR   - 
+
+				default: logrect.Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#696969"); break; // 회색
+			}
+		}
+
+		public void UpdateLogMsg_D(string msg, int flag)
+		{
+			Dispatcher.Invoke(new Action(() => UpdateLogMsg(msg, flag)));
+		}
+		#endregion
+
+		#region edit function
+		private void CheckBox_Checked(object sender, RoutedEventArgs e)
+		{
+			button_save_selecte_dvideo.Visibility = Visibility.Visible;
+			slider_editor.Visibility = Visibility.Visible;
+			edit_timelinebar.Visibility = Visibility.Visible;
+			btn_delete.Visibility = Visibility.Visible;
+			btn_merge.Visibility = Visibility.Visible;
+			btn_save.Visibility = Visibility.Visible;
+		}
+
+		private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+		{
+			button_save_selecte_dvideo.Visibility = Visibility.Hidden;
+			slider_editor.Visibility = Visibility.Hidden;
+			edit_timelinebar.Visibility= Visibility.Hidden;
+			btn_delete.Visibility = Visibility.Hidden;
+			btn_merge.Visibility = Visibility.Hidden;
+			btn_save.Visibility = Visibility.Hidden;
+		}
+
+		private void button_save_selecte_dvideo_Click(object sender, RoutedEventArgs e)
+		{
+			double start = slider_editor.ValueStart;
+			double end = slider_editor.ValueEnd;
+			con.SendDirectory("@" + start.ToString() + "@" + end.ToString() + "@" + con.Vinfo.VideoPath);
+		}
+		#endregion
+
+
+
+		private void Slider_editor_DragCompleted(object sender, System.Windows.Controls.Primitives.DragCompletedEventArgs e)
+		{
+			if (sldrPlayTime == null)
+			{
+				return;
+			}
+			if (sldrPlayTime.Value > slider_editor.ValueStart && sldrPlayTime.Value > slider_editor.ValueEnd)
+			{
+				sldrPlayTime.Value = slider_editor.ValueStart;
+				SldrPlayTime_DragCompleted(sender, null);
+			}
+		}
+
+		private void Slider_editor_ValueChanged_1(object sender, RoutedPropertyChangedEventArgs<HandyControl.Data.DoubleRange> e)
+		{
+			double temp = slider_editor.ValueStart / slider_editor.Maximum * (slider_editor.ActualWidth - 18) + 1;
+			double edit_timelinebar_width = (slider_editor.ValueEnd - slider_editor.ValueStart) / slider_editor.Maximum * (slider_editor.ActualWidth - 18);
+			if (edit_timelinebar == null)
+				return;
+			Canvas.SetLeft(edit_timelinebar, temp);
+			edit_timelinebar.Width = Math.Abs(edit_timelinebar_width);
+		}
+
+		private void btn_merge_Click(object sender, RoutedEventArgs e)
+		{
+			if (list_facecodes.Count <= 1)
+				return;
+
+			int first_face_code = con.Vinfo.Get_Face_code_idx(list_facecodes[0]);
+
+			for (int i = 1; i < list_facecodes.Count; i++)
+			{
+				int following_face_code = con.Vinfo.Get_Face_code_idx(list_facecodes[i]);
+
+				List<FaceDetail> list_followingface = con.Vinfo.Faces[following_face_code].Face_details;
+
+				for (int j = 0; j < list_followingface.Count; j++)
+				{
+					con.Vinfo.Faces[first_face_code].Face_details.Add(list_followingface[j]);
+				}
+				con.Vinfo.Faces.RemoveAt(following_face_code);
+			}
+
+			// Vinfo.Face[first_face_code].Face_details 오름차순으로 정렬
+			con.Vinfo.Faces[first_face_code].Sort_Face_details();
+
+			list_facecodes.Clear();
+
+			MessageBox.Show("Successfully Merged");
+
+			MakeSilde(con.Vinfo);
+		}
+
+		private void btn_delete_Click(object sender, RoutedEventArgs e)
+		{
+			for (int i = 0; i < list_facecodes.Count; i++)
+			{
+				int idx = con.Vinfo.Get_Face_code_idx(list_facecodes[i]);
+				con.Vinfo.Faces.RemoveAt(idx);
+			}
+
+			list_facecodes.Clear();
+
+			MessageBox.Show("Successfully Deleted");
+
+			MakeSilde(con.Vinfo);
+		}
+
+		private void btn_save_Click(object sender, RoutedEventArgs e)
+		{
+			var dir = con.Vinfo.VideoPath + ".txt";
+
+			using (var writer = new StreamWriter(dir))
+			{
+				if (con.Vinfo != null)
+				{
+					// START Write
+					string start = string.Format("@START@{0}#{1}#{2}", con.Vinfo.Fps, con.Vinfo.Frame_max_count, con.Vinfo.Times_per_sec);
+					writer.WriteLine(start);
+
+					string framedata = string.Empty;
+
+					foreach (Face face in con.Vinfo.Faces)
+					{
+						int facecode = face.Face_code;
+						foreach (FaceDetail fd in face.Face_details)
+						{
+							framedata += string.Format("@FRAMEDATA@");
+							framedata += string.Format("{0}${1}#{2}#{3}#{4}#{5}#{6}", fd.Frame_no, facecode, fd.Emotion_code, fd.X1, fd.Y1, fd.X2, fd.Y2);
+							//// FRAMEDATA write
+							writer.WriteLine(framedata);
+							framedata = string.Empty;
+						}
+					}
+					string end = string.Format("@END@{0}", con.Vinfo.VideoPath);
+					writer.WriteLine(end);
+				}
+			}
+			MessageBox.Show("Successfully Saved");
+		}
+	}
+}

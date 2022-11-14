@@ -1,0 +1,182 @@
+﻿<Window x:Class="Demo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Demo"
+        xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"        
+        xmlns:hc="https://handyorg.github.io/handycontrol"
+        mc:Ignorable="d"
+        Loaded="Window_Loaded"
+        Title="MainWindow" Height="950" Width="1040" Background="#22272A" ResizeMode="NoResize" Closing="Window_Closing"  KeyDown="Window_KeyDown" Visibility="Visible">
+    <Grid Margin="0,0,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="585"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="230"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+
+        <!--Menu-->
+        <Menu Grid.Row="0" Background="#22272A">
+            <MenuItem Header="  _File" Background="#2B3034" Foreground="White" BorderBrush="#FF1B1A1A" FontSize="12" Padding="0"             
+                      FontStretch="Normal" Width="35" Height="20" FontWeight="Normal" 
+                      HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" >
+
+                <MenuItem Background="#2B3034"  Header="열기(N)" Click="BtnSelectFile_Click" Foreground="White" />
+                <MenuItem Background="#2B3034"  Header="Load File(L)" Click="MenuItem_Click"  Foreground="White" />
+                <Separator/>
+                <MenuItem Background="#2B3034" Header="종료(X)" Click="ClostItem_Click"  Foreground="White" />
+            </MenuItem>
+        </Menu>
+
+        <!--MediaElement-->
+        <MediaElement x:Name="mediaMain" Grid.Row="1"
+                      LoadedBehavior="Manual" 
+                      UnloadedBehavior="Stop" 
+                      MediaOpened="MediaMain_MediaOpened" 
+                      MediaEnded="MediaMain_MediaEnded"
+                      MediaFailed="MediaMain_MediaFailed" OpacityMask="#FFD4D4D4" HorizontalAlignment="Center" Width="1040" MouseLeftButtonDown="mediaMain_MouseLeftButtonDown"/>
+
+        <!--Buttons-->
+        <Grid Grid.Row="2" Margin="0,0,0,1" Background="#22272A">
+            <Button x:Name="btnStart" Foreground="White"  HorizontalAlignment="Left" Margin="6,0,0,0" Width="40" Height="40" VerticalAlignment="Center" Click="BtnStart_Click"  BorderBrush="{x:Null}" IsTabStop="False">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Resources/Play.png" Stretch="Fill"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="btnStop" Foreground="White" HorizontalAlignment="Left" Margin="107,0,0,0" Width="25" Height="24" VerticalAlignment="Center" Click="BtnStop_Click" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Resources/Stop.png" Stretch="Fill"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name ="btnM10sec" Foreground="White"  HorizontalAlignment="Left" Margin="62,0,0,0" Width="30" Height="30" VerticalAlignment="Center" Click="btnM10sec_Click" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Resources/TenBack.png" Stretch="Fill"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name ="btnP10sec"  Foreground="White"  HorizontalAlignment="Left" Margin="144,0,0,0" Width="30" Height="30" VerticalAlignment="Center" Click="btnP10sec_Click" BorderBrush="{x:Null}" IsTabStop="False" Focusable="False">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Resources/TenFront.png" Stretch="Fill"/>
+                </Button.Background>
+            </Button>
+            <Label  x:Name="soundimage" Foreground="White" Margin="326,13,0,0" Width="28"  Height="26" VerticalAlignment="Top" MouseLeftButtonDown="Label_MouseLeftButtonDown" IsTabStop="False" BorderBrush="{x:Null}" HorizontalAlignment="Left">
+                <Label.Background>
+                    <ImageBrush ImageSource="/Resources/SoundOn.png" Stretch="Fill"/>
+                </Label.Background>
+            </Label>
+            <Slider x:Name="sldrVolume" HorizontalAlignment="Left" Width="100" Height="18"
+                    VerticalAlignment="Center"
+                    Thumb.DragStarted="SldrVolume_DragStarted"
+                    Thumb.DragCompleted="SldrVolume_DragCompleted" Maximum="1" LargeChange="0.1" Value="0.5" ValueChanged="sldrVolume_ValueChanged" IsTabStop="False" Focusable="False" Margin="356,0,0,0"/>
+            <Label x:Name="lblPlayTime" Content="00:00:00 / 00:00:00" Foreground="White" Width="150" Height="30" HorizontalAlignment="Left" Margin="168,0,0,0" Background="{x:Null}" BorderBrush="{x:Null}"/>
+            <CheckBox Name="edit_checkbox" Content="edit mode" HorizontalAlignment="Left" Margin="504,0,0,0" FontWeight="Bold" Foreground="White" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" />
+            <!--Invisiable로 바꿔야함-->
+            <Button Name="button_save_selecte_dvideo"  HorizontalAlignment="Left" Margin="622,0,0,0" Width="114" Content="save selected video" Height="24" Padding="0,0,0,0" Visibility="Hidden"  Click="button_save_selecte_dvideo_Click"/>
+            <Button Name="btn_delete"  HorizontalAlignment="Left" Margin="760,0,0,0" Width="50" Content="Delete" Height="24" Padding="0,0,0,0" Visibility="Hidden" Click="btn_delete_Click"/>
+            <Button Name="btn_merge"  HorizontalAlignment="Left" Margin="830,0,0,0" Width="50" Content="Merge" Height="24" Padding="0,0,0,0" Visibility="Hidden" Click="btn_merge_Click"/>
+            <Button Name="btn_save"  HorizontalAlignment="Left" Margin="900,0,0,0" Width="50" Content="Save" Height="24" Padding="0,0,0,0" Visibility="Hidden" Click="btn_save_Click"/>
+        </Grid>
+
+        <!--Timeline-->
+        <Grid Grid.Row="3" Margin="0,0,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="44*"/>
+                <ColumnDefinition Width="21*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+
+            </Grid.RowDefinitions>
+
+            <ScrollViewer x:Name="scrollviewer" Grid.Row="0" Panel.ZIndex="0" Background="#22272A" Margin="10,20,10,10" Grid.ColumnSpan="2">
+                <StackPanel Name="slide_area" Orientation="Vertical" VerticalAlignment="Top">
+                    <StackPanel Orientation="Horizontal">
+                        <Button Width="50" Height="50" HorizontalAlignment="Left" Background="AliceBlue"/>
+                        <Button Width="5.6" Height="50" HorizontalAlignment="Left" Margin="50,0,0,0" Background="red"/>
+                        <Button Width="18" Height="50" HorizontalAlignment="Left" Margin="20,0,0,0" Background="Green"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Width="50" Height="50" HorizontalAlignment="Left" Background="AliceBlue"/>
+                        <Button Width="30" Height="50" HorizontalAlignment="Left" Margin="50,0,0,0" Background="red"/>
+                        <Button Width="18" Height="50" HorizontalAlignment="Left" Margin="0,0,0,0" Background="Green"/>
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+
+            <hc:RangeSlider Name="slider_editor" hc:TipElement.Visibility="Visible" hc:TipElement.Placement="Top"  hc:TipElement.StringFormat="#0s" ValueEnd="100" TickPlacement="Both" 
+                            Margin="52,0,50,0" VerticalAlignment="Bottom" TickFrequency="60" Visibility="Hidden" Height="30" Thumb.DragCompleted="slider_editor_DragCompleted" ValueChanged="slider_editor_ValueChanged_1" Grid.ColumnSpan="2"/>
+
+
+            <Slider x:Name="sldrPlayTime" Margin="52,0,50,0" VerticalAlignment="Top"
+                    Minimum="0" Maximum="100"
+                    Panel.ZIndex="2"
+                    Thumb.DragStarted="SldrPlayTime_DragStarted"
+                    Thumb.DragCompleted="SldrPlayTime_DragCompleted"
+                    ValueChanged="SldrPlayTime_ValueChanged" Height="18" Grid.ColumnSpan="2"/>
+            <Canvas x:Name="canvas" Panel.ZIndex="1"
+                    Background="#22272A" 
+                    Height="01" Margin="60,0,15,0"
+                    VerticalAlignment="Bottom" Grid.ColumnSpan="2">
+                <Rectangle x:Name="timelinebar" Panel.ZIndex="1"
+                           Width="2" Height="208" Fill="AliceBlue"
+                           Canvas.Left="0" Canvas.Bottom="0" HorizontalAlignment="Center" Canvas.Top="-221" VerticalAlignment="Top" >
+                </Rectangle>
+                <Rectangle x:Name="edit_timelinebar" Panel.ZIndex="1" Visibility="Hidden"
+                           Width="20" Height="204" 
+                           Canvas.Left="53" Canvas.Bottom="0" HorizontalAlignment="Center" Canvas.Top="-219" VerticalAlignment="Top" >
+                    <Rectangle.Fill>
+                        <SolidColorBrush Color="AliceBlue" Opacity=".3"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Canvas>
+        </Grid>
+
+        <!--Status Bar-->
+        <Grid Grid.Row="4" Margin="0,0,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="41*"/>
+                <ColumnDefinition Width="26*"/>
+                <ColumnDefinition Width="41*"/>
+                <ColumnDefinition Width="932*"/>
+            </Grid.ColumnDefinitions>
+            <StatusBar x:Name ="statusbar" Background="#2B3034" Panel.ZIndex="3" Height="25" VerticalAlignment="Bottom" Grid.ColumnSpan="4" >
+                <StatusBar.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="350"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                        </Grid>
+                    </ItemsPanelTemplate>
+                </StatusBar.ItemsPanel>
+                <StatusBarItem>
+                    <TextBlock x:Name="TBD" Text="나중에" Foreground="White" Padding="0" FontSize="10"/>
+                </StatusBarItem>
+                <Separator Grid.Column="1" Margin="2,0,2,0"/>
+                <StatusBarItem Grid.Column="2">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Ellipse x:Name="logrect" Grid.Column="0" Fill="Red"/>
+                        <TextBlock x:Name="logmsg" Grid.Column="1" Text="로그 상태" Foreground="White" Padding="0" FontSize="10"/>
+                    </Grid>
+                </StatusBarItem>
+                <Separator Grid.Column="3"/>
+                <StatusBarItem Grid.Column="4">
+                    <Grid Width="570" HorizontalAlignment="Left">
+                        <ProgressBar x:Name="progressbar"
+                             VerticalAlignment="Center" Height="12"
+                             Minimum="0" Maximum="100" Margin="0,0,10,0" Visibility="Hidden"/>
+                    </Grid>
+                </StatusBarItem>
+            </StatusBar>
+        </Grid>
+    </Grid>
+</Window>

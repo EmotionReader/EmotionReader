@@ -1,0 +1,212 @@
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\CentralServer\CentralServer\obj\Debug\CentralServer.csproj.AssemblyReference.cache
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\CentralServer\CentralServer\obj\Debug\CentralServer.csproj.SuggestedBindingRedirects.cache
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\CentralServer\CentralServer\obj\Debug\MainWindow.g.cs
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\CentralServer\CentralServer\obj\Debug\App.g.cs
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\CentralServer\CentralServer\obj\Debug\CentralServer_MarkupCompile.cache
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\CentralServer\CentralServer\obj\Debug\CentralServer_MarkupCompile.lref
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\CentralServer\CentralServer\bin\Debug\CentralServer.exe.config
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\CentralServer\CentralServer\bin\Debug\CentralServer.exe
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\CentralServer\CentralServer\bin\Debug\CentralServer.pdb
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\CentralServer\CentralServer\obj\Debug\MainWindow.baml
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\CentralServer\CentralServer\obj\Debug\CentralServer.g.resources
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\CentralServer\CentralServer\obj\Debug\CentralServer.Properties.Resources.resources
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\CentralServer\CentralServer\obj\Debug\CentralServer.csproj.GenerateResource.cache
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\CentralServer\CentralServer\obj\Debug\CentralServer.csproj.CoreCompileInputs.cache
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\CentralServer\CentralServer\obj\Debug\CentralServer.exe
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\CentralServer\CentralServer\obj\Debug\CentralServer.pdb
+C:\Users\97858\Desktop\CentralServer\CentralServer\bin\Debug\CentralServer.exe.config
+C:\Users\97858\Desktop\CentralServer\CentralServer\bin\Debug\CentralServer.exe
+C:\Users\97858\Desktop\CentralServer\CentralServer\bin\Debug\CentralServer.pdb
+C:\Users\97858\Desktop\CentralServer\CentralServer\obj\Debug\CentralServer.csproj.AssemblyReference.cache
+C:\Users\97858\Desktop\CentralServer\CentralServer\obj\Debug\CentralServer.csproj.SuggestedBindingRedirects.cache
+C:\Users\97858\Desktop\CentralServer\CentralServer\obj\Debug\MainWindow.g.cs
+C:\Users\97858\Desktop\CentralServer\CentralServer\obj\Debug\App.g.cs
+C:\Users\97858\Desktop\CentralServer\CentralServer\obj\Debug\CentralServer_MarkupCompile.cache
+C:\Users\97858\Desktop\CentralServer\CentralServer\obj\Debug\CentralServer_MarkupCompile.lref
+C:\Users\97858\Desktop\CentralServer\CentralServer\obj\Debug\MainWindow.baml
+C:\Users\97858\Desktop\CentralServer\CentralServer\obj\Debug\CentralServer.g.resources
+C:\Users\97858\Desktop\CentralServer\CentralServer\obj\Debug\CentralServer.Properties.Resources.resources
+C:\Users\97858\Desktop\CentralServer\CentralServer\obj\Debug\CentralServer.csproj.GenerateResource.cache
+C:\Users\97858\Desktop\CentralServer\CentralServer\obj\Debug\CentralServer.csproj.CoreCompileInputs.cache
+C:\Users\97858\Desktop\CentralServer\CentralServer\obj\Debug\CentralServer.exe
+C:\Users\97858\Desktop\CentralServer\CentralServer\obj\Debug\CentralServer.pdb
+C:\Users\97858\Desktop\CentralServer\CentralServer\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0727_CentralServer\CentralServer\bin\Debug\CentralServer.exe.config
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0727_CentralServer\CentralServer\bin\Debug\CentralServer.exe
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0727_CentralServer\CentralServer\bin\Debug\CentralServer.pdb
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0727_CentralServer\CentralServer\obj\Debug\CentralServer.csproj.AssemblyReference.cache
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0727_CentralServer\CentralServer\obj\Debug\CentralServer.csproj.SuggestedBindingRedirects.cache
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0727_CentralServer\CentralServer\obj\Debug\MainWindow.g.cs
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0727_CentralServer\CentralServer\obj\Debug\App.g.cs
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0727_CentralServer\CentralServer\obj\Debug\CentralServer_MarkupCompile.cache
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0727_CentralServer\CentralServer\obj\Debug\CentralServer_MarkupCompile.lref
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0727_CentralServer\CentralServer\obj\Debug\MainWindow.baml
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0727_CentralServer\CentralServer\obj\Debug\CentralServer.g.resources
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0727_CentralServer\CentralServer\obj\Debug\CentralServer.Properties.Resources.resources
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0727_CentralServer\CentralServer\obj\Debug\CentralServer.csproj.GenerateResource.cache
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0727_CentralServer\CentralServer\obj\Debug\CentralServer.csproj.CoreCompileInputs.cache
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0727_CentralServer\CentralServer\obj\Debug\CentralServer.exe
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0727_CentralServer\CentralServer\obj\Debug\CentralServer.pdb
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0727_CentralServer - 복사본\CentralServer\bin\Debug\CentralServer.exe.config
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0727_CentralServer - 복사본\CentralServer\bin\Debug\CentralServer.exe
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0727_CentralServer - 복사본\CentralServer\bin\Debug\CentralServer.pdb
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0727_CentralServer - 복사본\CentralServer\obj\Debug\CentralServer.csproj.AssemblyReference.cache
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0727_CentralServer - 복사본\CentralServer\obj\Debug\CentralServer.csproj.SuggestedBindingRedirects.cache
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0727_CentralServer - 복사본\CentralServer\obj\Debug\MainWindow.g.cs
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0727_CentralServer - 복사본\CentralServer\obj\Debug\App.g.cs
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0727_CentralServer - 복사본\CentralServer\obj\Debug\CentralServer_MarkupCompile.cache
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0727_CentralServer - 복사본\CentralServer\obj\Debug\CentralServer_MarkupCompile.lref
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0727_CentralServer - 복사본\CentralServer\obj\Debug\MainWindow.baml
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0727_CentralServer - 복사본\CentralServer\obj\Debug\CentralServer.g.resources
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0727_CentralServer - 복사본\CentralServer\obj\Debug\CentralServer.Properties.Resources.resources
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0727_CentralServer - 복사본\CentralServer\obj\Debug\CentralServer.csproj.GenerateResource.cache
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0727_CentralServer - 복사본\CentralServer\obj\Debug\CentralServer.csproj.CoreCompileInputs.cache
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0727_CentralServer - 복사본\CentralServer\obj\Debug\CentralServer.exe
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0727_CentralServer - 복사본\CentralServer\obj\Debug\CentralServer.pdb
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0801_CentralServer\CentralServer\bin\Debug\CentralServer.exe.config
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0801_CentralServer\CentralServer\bin\Debug\CentralServer.exe
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0801_CentralServer\CentralServer\bin\Debug\CentralServer.pdb
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0801_CentralServer\CentralServer\obj\Debug\CentralServer.csproj.AssemblyReference.cache
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0801_CentralServer\CentralServer\obj\Debug\CentralServer.csproj.SuggestedBindingRedirects.cache
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0801_CentralServer\CentralServer\obj\Debug\MainWindow.g.cs
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0801_CentralServer\CentralServer\obj\Debug\App.g.cs
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0801_CentralServer\CentralServer\obj\Debug\CentralServer_MarkupCompile.cache
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0801_CentralServer\CentralServer\obj\Debug\CentralServer_MarkupCompile.lref
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0801_CentralServer\CentralServer\obj\Debug\MainWindow.baml
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0801_CentralServer\CentralServer\obj\Debug\CentralServer.g.resources
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0801_CentralServer\CentralServer\obj\Debug\CentralServer.Properties.Resources.resources
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0801_CentralServer\CentralServer\obj\Debug\CentralServer.csproj.GenerateResource.cache
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0801_CentralServer\CentralServer\obj\Debug\CentralServer.csproj.CoreCompileInputs.cache
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0801_CentralServer\CentralServer\obj\Debug\CentralServer.exe
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0801_CentralServer\CentralServer\obj\Debug\CentralServer.pdb
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0801_CentralServer\CentralServer\bin\Debug\HandyControl.dll
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0801_CentralServer\CentralServer\bin\Debug\HandyControl.xml
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0801_CentralServer\CentralServer\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0801_CentralServer\CentralServer\obj\Debug\App.baml
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0801_CentralServer\CentralServer\obj\Debug\CentralServer.csproj.CopyComplete
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0801_CentralServer_Dic_Tu\CentralServer\obj\Debug\CentralServer.csproj.AssemblyReference.cache
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0801_CentralServer_Dic_Tu\CentralServer\obj\Debug\CentralServer.csproj.SuggestedBindingRedirects.cache
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0801_CentralServer_Dic_Tu\CentralServer\obj\Debug\MainWindow.g.cs
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0801_CentralServer_Dic_Tu\CentralServer\obj\Debug\App.g.cs
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0801_CentralServer_Dic_Tu\CentralServer\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0801_CentralServer_Dic_Tu\CentralServer\obj\Debug\CentralServer_MarkupCompile.cache
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0801_CentralServer_Dic_Tu\CentralServer\obj\Debug\CentralServer_MarkupCompile.lref
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0801_CentralServer_Dic_Tu\CentralServer\obj\Debug\CentralServer.exe
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0801_CentralServer_Dic_Tu\CentralServer\obj\Debug\CentralServer.pdb
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0801_CentralServer_Dic_Tu\CentralServer\bin\Debug\CentralServer.exe.config
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0801_CentralServer_Dic_Tu\CentralServer\bin\Debug\CentralServer.exe
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0801_CentralServer_Dic_Tu\CentralServer\bin\Debug\CentralServer.pdb
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0801_CentralServer_Dic_Tu\CentralServer\bin\Debug\HandyControl.dll
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0801_CentralServer_Dic_Tu\CentralServer\bin\Debug\HandyControl.xml
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0801_CentralServer_Dic_Tu\CentralServer\obj\Debug\App.baml
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0801_CentralServer_Dic_Tu\CentralServer\obj\Debug\MainWindow.baml
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0801_CentralServer_Dic_Tu\CentralServer\obj\Debug\CentralServer.g.resources
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0801_CentralServer_Dic_Tu\CentralServer\obj\Debug\CentralServer.Properties.Resources.resources
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0801_CentralServer_Dic_Tu\CentralServer\obj\Debug\CentralServer.csproj.GenerateResource.cache
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0801_CentralServer_Dic_Tu\CentralServer\obj\Debug\CentralServer.csproj.CoreCompileInputs.cache
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0801_CentralServer_Dic_Tu\CentralServer\obj\Debug\CentralServer.csproj.CopyComplete
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0803_CentralServer\CentralServer\bin\Debug\CentralServer.exe.config
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0803_CentralServer\CentralServer\bin\Debug\CentralServer.exe
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0803_CentralServer\CentralServer\bin\Debug\CentralServer.pdb
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0803_CentralServer\CentralServer\bin\Debug\HandyControl.dll
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0803_CentralServer\CentralServer\bin\Debug\HandyControl.xml
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0803_CentralServer\CentralServer\obj\Debug\CentralServer.csproj.AssemblyReference.cache
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0803_CentralServer\CentralServer\obj\Debug\CentralServer.csproj.SuggestedBindingRedirects.cache
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0803_CentralServer\CentralServer\obj\Debug\MainWindow.g.cs
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0803_CentralServer\CentralServer\obj\Debug\App.g.cs
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0803_CentralServer\CentralServer\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0803_CentralServer\CentralServer\obj\Debug\CentralServer_MarkupCompile.cache
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0803_CentralServer\CentralServer\obj\Debug\CentralServer_MarkupCompile.lref
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0803_CentralServer\CentralServer\obj\Debug\App.baml
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0803_CentralServer\CentralServer\obj\Debug\MainWindow.baml
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0803_CentralServer\CentralServer\obj\Debug\CentralServer.g.resources
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0803_CentralServer\CentralServer\obj\Debug\CentralServer.Properties.Resources.resources
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0803_CentralServer\CentralServer\obj\Debug\CentralServer.csproj.GenerateResource.cache
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0803_CentralServer\CentralServer\obj\Debug\CentralServer.csproj.CoreCompileInputs.cache
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0803_CentralServer\CentralServer\obj\Debug\CentralServer.csproj.CopyComplete
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0803_CentralServer\CentralServer\obj\Debug\CentralServer.exe
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0803_CentralServer\CentralServer\obj\Debug\CentralServer.pdb
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0803_CentralServer - 복사본\CentralServer\bin\Debug\CentralServer.exe.config
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0803_CentralServer - 복사본\CentralServer\bin\Debug\CentralServer.exe
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0803_CentralServer - 복사본\CentralServer\bin\Debug\CentralServer.pdb
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0803_CentralServer - 복사본\CentralServer\bin\Debug\HandyControl.dll
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0803_CentralServer - 복사본\CentralServer\bin\Debug\HandyControl.xml
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0803_CentralServer - 복사본\CentralServer\obj\Debug\CentralServer.csproj.AssemblyReference.cache
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0803_CentralServer - 복사본\CentralServer\obj\Debug\CentralServer.csproj.SuggestedBindingRedirects.cache
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0803_CentralServer - 복사본\CentralServer\obj\Debug\MainWindow.g.cs
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0803_CentralServer - 복사본\CentralServer\obj\Debug\App.g.cs
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0803_CentralServer - 복사본\CentralServer\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0803_CentralServer - 복사본\CentralServer\obj\Debug\CentralServer_MarkupCompile.cache
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0803_CentralServer - 복사본\CentralServer\obj\Debug\CentralServer_MarkupCompile.lref
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0803_CentralServer - 복사본\CentralServer\obj\Debug\App.baml
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0803_CentralServer - 복사본\CentralServer\obj\Debug\MainWindow.baml
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0803_CentralServer - 복사본\CentralServer\obj\Debug\CentralServer.g.resources
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0803_CentralServer - 복사본\CentralServer\obj\Debug\CentralServer.Properties.Resources.resources
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0803_CentralServer - 복사본\CentralServer\obj\Debug\CentralServer.csproj.GenerateResource.cache
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0803_CentralServer - 복사본\CentralServer\obj\Debug\CentralServer.csproj.CoreCompileInputs.cache
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0803_CentralServer - 복사본\CentralServer\obj\Debug\CentralServer.csproj.CopyComplete
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0803_CentralServer - 복사본\CentralServer\obj\Debug\CentralServer.exe
+C:\Users\jjw34\Desktop\BIT\11_Project\04_WPF_CentralServer\0803_CentralServer - 복사본\CentralServer\obj\Debug\CentralServer.pdb
+C:\Users\97858\Desktop\final\0803_CentralServer - 복사본\CentralServer\bin\Debug\CentralServer.exe.config
+C:\Users\97858\Desktop\final\0803_CentralServer - 복사본\CentralServer\bin\Debug\CentralServer.exe
+C:\Users\97858\Desktop\final\0803_CentralServer - 복사본\CentralServer\bin\Debug\CentralServer.pdb
+C:\Users\97858\Desktop\final\0803_CentralServer - 복사본\CentralServer\bin\Debug\HandyControl.dll
+C:\Users\97858\Desktop\final\0803_CentralServer - 복사본\CentralServer\bin\Debug\HandyControl.xml
+C:\Users\97858\Desktop\final\0803_CentralServer - 복사본\CentralServer\obj\Debug\CentralServer.csproj.AssemblyReference.cache
+C:\Users\97858\Desktop\final\0803_CentralServer - 복사본\CentralServer\obj\Debug\CentralServer.csproj.SuggestedBindingRedirects.cache
+C:\Users\97858\Desktop\final\0803_CentralServer - 복사본\CentralServer\obj\Debug\MainWindow.g.cs
+C:\Users\97858\Desktop\final\0803_CentralServer - 복사본\CentralServer\obj\Debug\App.g.cs
+C:\Users\97858\Desktop\final\0803_CentralServer - 복사본\CentralServer\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\97858\Desktop\final\0803_CentralServer - 복사본\CentralServer\obj\Debug\CentralServer_MarkupCompile.cache
+C:\Users\97858\Desktop\final\0803_CentralServer - 복사본\CentralServer\obj\Debug\CentralServer_MarkupCompile.lref
+C:\Users\97858\Desktop\final\0803_CentralServer - 복사본\CentralServer\obj\Debug\App.baml
+C:\Users\97858\Desktop\final\0803_CentralServer - 복사본\CentralServer\obj\Debug\MainWindow.baml
+C:\Users\97858\Desktop\final\0803_CentralServer - 복사본\CentralServer\obj\Debug\CentralServer.g.resources
+C:\Users\97858\Desktop\final\0803_CentralServer - 복사본\CentralServer\obj\Debug\CentralServer.Properties.Resources.resources
+C:\Users\97858\Desktop\final\0803_CentralServer - 복사본\CentralServer\obj\Debug\CentralServer.csproj.GenerateResource.cache
+C:\Users\97858\Desktop\final\0803_CentralServer - 복사본\CentralServer\obj\Debug\CentralServer.csproj.CoreCompileInputs.cache
+C:\Users\97858\Desktop\final\0803_CentralServer - 복사본\CentralServer\obj\Debug\CentralServer.csproj.CopyComplete
+C:\Users\97858\Desktop\final\0803_CentralServer - 복사본\CentralServer\obj\Debug\CentralServer.exe
+C:\Users\97858\Desktop\final\0803_CentralServer - 복사본\CentralServer\obj\Debug\CentralServer.pdb
+C:\Users\97858\Desktop\final\Server\CentralServer\bin\Debug\CentralServer.exe.config
+C:\Users\97858\Desktop\final\Server\CentralServer\bin\Debug\CentralServer.exe
+C:\Users\97858\Desktop\final\Server\CentralServer\bin\Debug\CentralServer.pdb
+C:\Users\97858\Desktop\final\Server\CentralServer\bin\Debug\HandyControl.dll
+C:\Users\97858\Desktop\final\Server\CentralServer\bin\Debug\HandyControl.xml
+C:\Users\97858\Desktop\final\Server\CentralServer\obj\Debug\CentralServer.csproj.AssemblyReference.cache
+C:\Users\97858\Desktop\final\Server\CentralServer\obj\Debug\CentralServer.csproj.SuggestedBindingRedirects.cache
+C:\Users\97858\Desktop\final\Server\CentralServer\obj\Debug\MainWindow.g.cs
+C:\Users\97858\Desktop\final\Server\CentralServer\obj\Debug\App.g.cs
+C:\Users\97858\Desktop\final\Server\CentralServer\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\97858\Desktop\final\Server\CentralServer\obj\Debug\CentralServer_MarkupCompile.cache
+C:\Users\97858\Desktop\final\Server\CentralServer\obj\Debug\CentralServer_MarkupCompile.lref
+C:\Users\97858\Desktop\final\Server\CentralServer\obj\Debug\App.baml
+C:\Users\97858\Desktop\final\Server\CentralServer\obj\Debug\MainWindow.baml
+C:\Users\97858\Desktop\final\Server\CentralServer\obj\Debug\CentralServer.g.resources
+C:\Users\97858\Desktop\final\Server\CentralServer\obj\Debug\CentralServer.Properties.Resources.resources
+C:\Users\97858\Desktop\final\Server\CentralServer\obj\Debug\CentralServer.csproj.GenerateResource.cache
+C:\Users\97858\Desktop\final\Server\CentralServer\obj\Debug\CentralServer.csproj.CoreCompileInputs.cache
+C:\Users\97858\Desktop\final\Server\CentralServer\obj\Debug\CentralServer.csproj.CopyComplete
+C:\Users\97858\Desktop\final\Server\CentralServer\obj\Debug\CentralServer.exe
+C:\Users\97858\Desktop\final\Server\CentralServer\obj\Debug\CentralServer.pdb
+C:\Users\97858\Desktop\EmotionReader\Server\CentralServer\bin\Debug\CentralServer.exe.config
+C:\Users\97858\Desktop\EmotionReader\Server\CentralServer\bin\Debug\CentralServer.exe
+C:\Users\97858\Desktop\EmotionReader\Server\CentralServer\bin\Debug\CentralServer.pdb
+C:\Users\97858\Desktop\EmotionReader\Server\CentralServer\bin\Debug\HandyControl.dll
+C:\Users\97858\Desktop\EmotionReader\Server\CentralServer\bin\Debug\HandyControl.xml
+C:\Users\97858\Desktop\EmotionReader\Server\CentralServer\obj\Debug\CentralServer.csproj.AssemblyReference.cache
+C:\Users\97858\Desktop\EmotionReader\Server\CentralServer\obj\Debug\CentralServer.csproj.SuggestedBindingRedirects.cache
+C:\Users\97858\Desktop\EmotionReader\Server\CentralServer\obj\Debug\MainWindow.g.cs
+C:\Users\97858\Desktop\EmotionReader\Server\CentralServer\obj\Debug\App.g.cs
+C:\Users\97858\Desktop\EmotionReader\Server\CentralServer\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\97858\Desktop\EmotionReader\Server\CentralServer\obj\Debug\CentralServer_MarkupCompile.cache
+C:\Users\97858\Desktop\EmotionReader\Server\CentralServer\obj\Debug\CentralServer_MarkupCompile.lref
+C:\Users\97858\Desktop\EmotionReader\Server\CentralServer\obj\Debug\App.baml
+C:\Users\97858\Desktop\EmotionReader\Server\CentralServer\obj\Debug\MainWindow.baml
+C:\Users\97858\Desktop\EmotionReader\Server\CentralServer\obj\Debug\CentralServer.g.resources
+C:\Users\97858\Desktop\EmotionReader\Server\CentralServer\obj\Debug\CentralServer.Properties.Resources.resources
+C:\Users\97858\Desktop\EmotionReader\Server\CentralServer\obj\Debug\CentralServer.csproj.GenerateResource.cache
+C:\Users\97858\Desktop\EmotionReader\Server\CentralServer\obj\Debug\CentralServer.csproj.CoreCompileInputs.cache
+C:\Users\97858\Desktop\EmotionReader\Server\CentralServer\obj\Debug\CentralServer.csproj.CopyComplete
+C:\Users\97858\Desktop\EmotionReader\Server\CentralServer\obj\Debug\CentralServer.exe
+C:\Users\97858\Desktop\EmotionReader\Server\CentralServer\obj\Debug\CentralServer.pdb

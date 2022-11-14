@@ -1,0 +1,38 @@
+﻿c# >> python:
+
+   video_analysis:(socket)
+      @ START @ file_path
+
+   live_analysis:(socket)
+      @ LIVESTART @folder_path 
+      @ LIVEEND   @
+      
+python >> c#:
+   video_analysis:(write file)
+      @ START     @ fps # frame_max_count # Frame_Gapond
+      @ FRAMEDATA @ frame_no $ face_code1 # emotion_code1 # x1 # y1 # x2 # y2
+                             $ face_code2 # emotion_code1 # x1 # y1 # x2 # y2
+      @ END       @ file_path.mp4
+
+   video_analysis:(socket)
+      @ PROGRESSSTART @
+      @ PROGRESS      @ 0.65   (0~1)
+      @ PROGRESSEND   @      
+      @ ERROR         @"msg"
+
+   live_analysis:(socket)
+      @ LIVESTART @
+      @ LIVEDATA  @ anger # disgust # fear # happy # neutral # sad # surprise
+      @ LIVEEND   @
+
+   live_analysis:(write file)
+      @ LIVEDATA @ frame_count @ anger # disgust #  fear # happy # neutral # sad # surprise $ x1 # y1 # x2 # y2 (live_emotion)
+      
+      
+      @ START     @ fps # frame_max_count # Frame_Gap 
+      @ FRAMEDATA @ frame_count $ face_code ^ anger # disgust #  fear # happy # neutral # sad # surprise ^ x1 # y1 # x2 # y2 (video_analysis)
+      @ END       @ file_path.mp4
+                               
+      
+
+   

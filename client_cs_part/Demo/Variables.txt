@@ -1,0 +1,2 @@
+@Pythonexe@C:\Users\97858\Desktop\pycharm\venv\Scripts\python.exe
+@Allpath@C:\Users\97858\Desktop\pycharm\my_project

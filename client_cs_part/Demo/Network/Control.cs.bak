@@ -1,0 +1,386 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Net.Sockets;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace Demo
+{
+    public class Control
+    {
+        public VideoInfo Vinfo { get; set; }
+        public MainWindow MainWindow { get; set; }
+        Socket g_client;
+        public Thread t;
+
+        #region 싱글톤
+        public static Control Instance { get; private set; }
+
+        static Control()
+        {
+            Instance = new Control();
+        }
+        private Control() { }
+        #endregion
+
+        #region 네트웤 사용 필드
+        private const int SERVER_PORT = 9001;
+        private WbServer server = null;
+        #endregion
+
+        #region 시작과 종료시점(데이터 베이스 연결/소켓 및 종료 처리)
+        public bool Init()
+        {
+            try
+            {
+                server = new WbServer(SERVER_PORT); //소켓생성--> listen
+                server.Start(LogMessage, RecvMessage); //ListenThread
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public void Exit()
+        {
+            try
+            {
+                if (server != null)
+                {
+                    server.Dispose(); //ListenThread를 종료, 대기소켓close
+                    server = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+
+        #region 네트웤 콜백 메서드
+        private void LogMessage(LogFlag flag, string msg)
+        {
+            Console.WriteLine("[{0}] : {1} ({2})", flag, msg, DateTime.Now.ToString());
+            string logmsg = string.Format("[{0}] : {1} ({2})", flag, msg, DateTime.Now.ToString());
+            int flag1 = (int)flag;
+            MainWindow.UpdateLogMsg_D(msg, flag1);
+        }
+
+
+        private void RecvMessage(Socket client, string msg)
+        {
+            string[] sp = msg.Split('@');
+            g_client = client;
+            Console.WriteLine(msg);
+
+            for (int i = 1; i < sp.Length; i += 2)
+            {
+                switch (sp[i])
+                {
+                    case "START": OnStart(sp[i + 1]); break;
+                    case "PROGRESS": OnGetInfo(sp[i + 1]); break;
+                    case "END": OnEnd(sp[i + 1]); break;
+                    case "ERROR": OnError(sp[i + 1]); break;
+                }
+            }
+        }
+        #endregion
+
+        #region 네트웤 응답 처리 메서드
+        private void OnStart(string msg)
+        {
+            try
+            {
+                return;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        private void OnGetInfo(string msg)
+        {
+            try
+            {
+                //프로그래스바 정보 업데이트
+                //File Read
+                msg = msg.Trim();
+                Double currentprogress = Double.Parse(msg);
+
+                MainWindow.main.CurrentProgress = (Double)(currentprogress * 100);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        private void OnEnd(string msg)
+        {
+            try
+            {
+                msg = msg.Trim();
+                string dir = Path.GetFullPath(msg);
+
+                string[] sp = dir.Split('\\');
+
+
+                FileRead(dir);
+
+                return;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        private void OnError(string msg)
+        {
+            try
+            {
+                throw new Exception(string.Format("!!{0}!! \n잘못된 파일 위치입니다.", msg));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+
+        #region FileIO
+        public void FileRead(string dir)
+        {
+            try
+            {
+                string text = File.ReadAllText(dir);
+                string[] sp = text.Split('@');
+
+                for (int i = 1; i < sp.Length; i += 2)
+                {
+                    switch (sp[i])
+                    {
+                        case "START": FileStart(sp[i + 1]); break;
+                        case "FRAMEDATA": FileGetInfo(sp[i + 1]); break;
+                        case "END": FileEnd(sp[i + 1]); break;
+                        case "ERROR": FileError(sp[i + 1]); break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        private void FileStart(string msg)
+        {
+            try
+            {
+                msg = msg.Trim();
+                string[] f1 = msg.Split('#');
+
+                double fps = double.Parse(f1[0]);
+                int fmc = int.Parse(f1[1]);
+                double tps = double.Parse(f1[2]);
+
+                Vinfo = new VideoInfo(fps, fmc, tps);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        private void FileGetInfo(string msg)
+        {
+            try
+            {
+                msg = msg.Trim();
+                string[] f1 = msg.Split('$');
+
+                if (f1.Length == 1)
+                    return;
+
+                int frame_no = int.Parse(f1[0]);
+                int face_code, emotion_code, x1, y1, x2, y2;
+
+                for (int i = 1; i <= f1.Length - 1; i++)
+                {
+                    string[] f2 = f1[i].Split('#');
+                    face_code = int.Parse(f2[0]);
+                    emotion_code = int.Parse(f2[1]);
+
+                    x1 = int.Parse(f2[2]);
+                    y1 = int.Parse(f2[3]);
+                    x2 = int.Parse(f2[4]);
+                    y2 = int.Parse(f2[5]);
+
+                    FaceDetail facedetail = new FaceDetail(frame_no, emotion_code, x1, y2, x2, y2);
+
+                    int idx = Vinfo.Get_Face_code_idx(face_code);
+                    if (idx != -1)
+                    {
+                        Vinfo.Faces[idx].Face_details.Add(facedetail);
+                    }
+                    else // 인식한 face_code의 기존 데이터가 리스트에 없는 경우
+                    {
+                        Face face = new Face(face_code, facedetail);
+                        Vinfo.Faces.Add(face);
+                        //Console.WriteLine(string.Format("{0}", Vinfo.Faces[Vinfo.Get_Face_code_idx(face_code)].Face_code));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        private void FileEnd(string msg)
+        {
+            try
+            {
+                msg = msg.Trim();
+                Vinfo.Set_VideoPath(msg);
+                //MainWindow.main.CurrentProgress = 1;
+                MainWindow.MakeSlide_D(Vinfo);
+                MainWindow.main.CurrentProgress_Visibility = System.Windows.Visibility.Hidden;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+
+        private void FileError(string msg)
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+
+        #region 기능 메서드
+        public void SendDirectory(string dir)
+        {
+            server.SendData(server.client, dir, dir.Length);
+        }
+        #endregion
+
+        #region Call Python
+        public void Call_Python()
+        {
+            try
+            {
+                t = new Thread(Python_execProcess);
+                t.IsBackground = true;
+                t.Start();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void Python_execProcess()
+        {
+            try
+            {
+                var psi = new ProcessStartInfo();
+
+                // Read File Paths에 프로퍼티 있음
+                psi.FileName = Pythonexe;
+                var script = Pythonsource;
+
+                psi.Arguments = $"\"{script}\"";
+
+                psi.UseShellExecute = false;
+                psi.RedirectStandardError = true;
+                psi.RedirectStandardOutput = false;
+
+                var errors = "";
+                using (var process = Process.Start(psi))
+                {
+                    errors = process.StandardError.ReadToEnd();
+                }
+                Console.WriteLine(errors);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void VideoCutting_Python(int start, int end, string path) //path mp4._cut.txt
+        {
+            path = path + "_cut.txt";
+            string[] lines = { start.ToString(), end.ToString(), path };
+            File.WriteAllLines(path, lines);
+        }
+        #endregion
+
+        #region Read File Paths
+        public string Pythonexe { get; private set; }
+        public string Pythonsource { get; private set; }
+        public string ProjectPath { get; private set; }
+
+        public void ReadFilePaths()
+        {
+            try
+            {
+                string willdir = string.Empty;
+                string currentpath = Environment.CurrentDirectory;
+
+                // Demo 파일 위치 저장
+                // MainWindow.xaml.cs에서 사용하는 Resource 폴더 이모티콘용
+                string[] sp1 = currentpath.Split('\\');
+                for (int i = 0; i < sp1.Length - 2; i++)
+                {
+                    willdir += sp1[i] + "\\";
+                }
+                ProjectPath = willdir; // 마지막에 "\\" 포함
+
+
+                // File에 저장된 Python Path 저장
+                string text = File.ReadAllText(currentpath + "\\" + "Variables.txt");
+                string[] sp = text.Split('@');
+
+                for (int i = 1; i < sp.Length; i += 2)
+                {
+                    if (sp[i] == "Pythonexe")
+                    {
+                        Pythonexe = sp[i + 1].Trim();
+                    }
+                    else if (sp[i] == "Pythonsource")
+                    {
+                        Pythonsource = sp[i + 1].Trim();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
+        #endregion
+
+    }
+}
