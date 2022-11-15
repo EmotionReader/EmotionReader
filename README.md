@@ -1,6 +1,6 @@
 <h1 align="Left">
   <br>
-  <!--<a><img src="https://user-images.githubusercontent.com/83953721/201518884-329bc420-4e25-41f3-805c-2b3a63cd47e8.jpg" width="25"></a>--> EmotionReader
+  <a><img src="https://user-images.githubusercontent.com/83953721/201518884-329bc420-4e25-41f3-805c-2b3a63cd47e8.jpg" width="25"></a> EmotionReader
   <br>
 </h1>
 <h4 align="Left">  : 딥러닝을 활용한 표정 분석 프로그램 (Facial Expression Analysis Program Using Deep Learning)</h4>
@@ -67,23 +67,11 @@
 	<a><img src="https://user-images.githubusercontent.com/83953721/201552303-32e7fb97-fb86-43b0-9f7b-09948423440a.png"></a> 
 <div align=Left> 
 
-<!-- * LivePreview - Make changes, See changes
-  - Instantly see what your Markdown documents look like in HTML as you create them.
- -->
-
 
 ## Credits
-
-<!-- This software uses the following open source packages:
- -->
-<!-- - [Electron](http://electron.atom.io/) -->
-
-<!-- <a href="https://www.buymeacoffee.com/5Zn8Xh3l9" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/purple_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
 
 <p>Or</p> 
 
 <a href="https://www.patreon.com/amitmerchant">
 	<img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="160">
 </a>
-
- -->
