@@ -65,7 +65,7 @@
 	<a><img src="https://user-images.githubusercontent.com/83953721/201552300-463e4b57-7528-4a12-8096-be87bfb8398f.png"></a> 
 	<a><img src="https://user-images.githubusercontent.com/83953721/201552302-24df3d30-3f90-4677-902a-622b2d8e3364.png"></a> 
 	<a><img src="https://user-images.githubusercontent.com/83953721/201552303-32e7fb97-fb86-43b0-9f7b-09948423440a.png"></a> 
-<div align=Left> 
+</div>
 
 
 ## Credits
